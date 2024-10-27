@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "allauth_ui",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'serviceapp',
+    "widget_tweaks",
+    "slippers",
 ]
 
 AUTH_USER_MODEL = 'serviceapp.User'
@@ -59,6 +62,7 @@ MIDDLEWARE = [
 
 ]
 
+ALLAUTH_UI_THEME = "light"
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
