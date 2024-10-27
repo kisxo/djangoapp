@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'serviceapp',
 ]
 
+AUTH_USER_MODEL = 'serviceapp.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,7 +74,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # `allauth` needs this from django
                 'django.template.context_processors.request',
-            ],
+            ],  
         },
     },
 ]
@@ -139,7 +141,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'static'), )
 
 #for media file storage
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
