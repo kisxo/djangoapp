@@ -6,11 +6,13 @@
 
 {% block body%}
 
+{% url 'serviceapp:profile' as profile_url %}
 
-{% url 'serviceapp:updateProfile' as updateProfile_url %}
-{% if user.profile.is_profile_complete is not True and updateProfile_url %}
-Update your profile
-<a href="{{ updateProfile_url }}">Your Profile</a>
+{% if user.is_profile_complete is not True %}
+    {% if profile_url %}
+        Update your profile
+        <a href="{{ updateProfile_url }}">Your Profile</a>
+    {% endif %}
 {% endif %}
 
 {% endblock%}
