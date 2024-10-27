@@ -17,3 +17,19 @@ class ProfileForm(ModelForm):
     class Meta:
         model = Profile
         fields = ('profile_picture', 'contact_phone', 'address', 'zip_code', 'city')
+
+        labels = {
+            'profile_picture': '', 
+            'contact_phone': '',
+            'address': '',
+            'zip_code': '',
+            'city': '',     
+        }
+
+        widgets = {
+            'profile_picture': forms.FileInput( attrs={'class': 'form-control', 'placeholder': 'Upload Profile Picture'}), 
+            'contact_phone': forms.TextInput( attrs={'class': 'form-control', 'placeholder': 'Phone'}),
+            'address': forms.TextInput( attrs={'class': 'form-control', 'placeholder': 'Address'}),
+            'zip_code': forms.TextInput( attrs={'class': 'form-control', 'placeholder': 'Zip Code'}),
+            'city': forms.TextInput( attrs={'class': 'form-control', 'placeholder': 'City'}) 
+        }
