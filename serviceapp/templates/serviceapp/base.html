@@ -51,10 +51,10 @@
             </details>
             <div class="collapse navbar-collapse p-0 m-0 border-top" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    {% url 'fxsimulator:fxtrade' as lobby_url %}
-                    {% if lobby_url %}
+                    {% url 'serviceapp:updateProfile' as updateProfile_url %}
+                    {% if updateProfile_url %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link ps-3 {% if request.path == lobby_url %} custom-nav-link-active {% endif %}" aria-current="page" href="{{ lobby_url }}">Lobby</a>
+                        <a class="nav-link ps-3 {% if request.path == updateProfile_url %} custom-nav-link-active {% endif %}" aria-current="page" href="{{ updateProfile_url }}">Profile</a>
                     </li>
                     {% endif %}
                     
