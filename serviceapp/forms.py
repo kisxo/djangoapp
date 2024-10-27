@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import Profile
+from .models import User
  
 # creating a form 
 class UserProfileForm(forms.Form):
@@ -15,7 +15,7 @@ class UserProfileForm(forms.Form):
 #create profile form
 class ProfileForm(ModelForm):
     class Meta:
-        model = Profile
+        model = User
         fields = ('profile_picture', 'contact_phone', 'address', 'zip_code', 'city')
 
         labels = {

@@ -1,34 +1,60 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from . forms import ProfileForm
-from . models import Profile
 from django.core import serializers
 from django.forms.models import model_to_dict
 from django.contrib.auth.decorators import login_required
 
 def index(request):
   
-  if request.user.is_authenticated:
-    profile = Profile(request.user)
-    # print(request.user.profile.address)
+  return render(request, "serviceapp/index.html")
 
-  context_data = {}#request.user.profile}
-  print(context_data)
-  return render(request, "serviceapp/index.html", context_data)
+# @login_required
+# def updateProfile(request):
+#   submitted = False
+#   if request.method == "POST":
+#     form = ProfileForm(request.POST)
+#     if form.is_valid():
+#       new_profile_form = form.save(commit=False)
+#       Fruit.objects.create(name="Apple")
+#       Profile.objects.create()
+#       return HttpResponseRedirect('/updateProfile?submitted=True')
+#   else:
+#     form = ProfileForm
+#     if 'submitted' in request.GET:
+#       submitted = True
+
+#   context_data = { 'form': form, 
+#                    'submitted': submitted}
+#   return render(request, "serviceapp/updateProfile.html", context_data)
 
 @login_required
-def updateProfile(request):
-  submitted = False
-  if request.method == "POST":
-    form = ProfileForm(request.POST)
-    if form.is_valid():
-      form.save()
-      return HttpResponseRedirect('/updateProfile?submitted=True')
-  else:
-    form = ProfileForm
-    if 'submitted' in request.GET:
-      submitted = True
+def profile(request):
+  return render(request, "serviceapp/profile.html")
 
-  context_data = { 'form': form, 
-                   'submitted': submitted}
-  return render(request, "serviceapp/updateProfile.html", context_data)
+@login_required
+def updateProfile(request, field):
+
+  if request.method == "POST":
+
+    match field:
+      case 'profile_picture':
+        request.user.profile_picture = request.FILES.get("profile_picture")
+      case 'first_name':
+        request.user.first_name = request.POST.get("first_name")
+      case 'last_name':
+        request.user.last_name = request.POST.get("last_name")
+      case 'contact_phone':
+        request.user.contact_phone = request.POST.get("contact_phone")
+      case 'address':
+        request.user.address = request.POST.get("address")
+      case 'zip_code':
+        request.user.zip_code = request.POST.get("zip_code")
+      case 'city':
+        request.user.city = request.POST.get("city")
+      case _:
+          pass
+    request.user.save()
+    return HttpResponseRedirect('/profile')
+  else:
+    return HttpResponseRedirect('/profile')

@@ -1,0 +1,62 @@
+{% extends "serviceapp/base.html" %}
+{% block head%}
+{% endblock%}
+
+{% block head_title%} SmartServe{% endblock%}
+
+{% block body%}
+
+{{user.profile.is_profile_complete }}
+
+
+    <div class="mx-4 ">
+        <h1>Profile</h1>
+    <center>
+        <img src="{{user.profile_picture.url}}" alt="" srcset="" width="250" height="250">
+    </center>
+
+    <form action = "/updateProfile/profile_picture/" method = "post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input class="form-control form-control my-3" type="file" name="profile_picture" placeholder="Upload a Profile Picture" aria-label=".fotm-control example">
+        <button type="submit" class="btn btn-primary">Update Profile Picture</button>
+     </form>
+
+    <form action = "/updateProfile/first_name/" method = "post">
+        {% csrf_token %}
+        <input class="form-control fotm-control my-3" type="text" name="first_name" value="{{user.first_name}}" placeholder="First Name" aria-label=".fotm-control example">
+        <button type="submit" class="btn btn-primary">Update First Name</button>
+     </form>
+
+     <form action = "/updateProfile/last_name/" method = "post">
+        {% csrf_token %}
+        <input class="form-control fotm-control my-3" type="text" name="last_name" value="{{user.last_name}}"  placeholder="Last Name" aria-label=".fotm-control example">
+        <button type="submit" class="btn btn-primary">Update Last Name</button>
+     </form>
+
+     <form action = "/updateProfile/phone/" method = "post">
+        {% csrf_token %}
+        <input class="form-control fotm-control my-3" type="text" name="contact_phone" value="{{user.contact_phone}}"  placeholder="Phone" aria-label=".fotm-control example">
+        <button type="submit" class="btn btn-primary">Update Phone</button>
+     </form>
+
+     <form action = "/updateProfile/address/" method = "post">
+        {% csrf_token %}
+        <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="address" aria-label=".fotm-control example">
+        <button type="submit" class="btn btn-primary">Update address</button>
+     </form>
+     
+     <form action = "/updateProfile/zip_code/" method = "post">
+        {% csrf_token %}
+        <input class="form-control fotm-control my-3" type="text" name="zip_code" value="{{user.zip_code}}"  placeholder="zip_code" aria-label=".fotm-control example">
+        <button type="submit" class="btn btn-primary">Update Zip Code</button>
+     </form>
+
+     <form action = "/updateProfile/city/" method = "post">
+        {% csrf_token %}
+        <input class="form-control fotm-control my-3" type="text" name="city" value="{{user.city}}"  placeholder="city" aria-label=".fotm-control example">
+        <button type="submit" class="btn btn-primary">Update City</button>
+     </form>
+    </div>
+     
+
+{% endblock%}

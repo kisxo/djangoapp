@@ -1,11 +1,7 @@
 from django.contrib import admin
-from .models import Profile, ServiceProviders
+from .models import ServiceProviders
+from django.contrib.auth.admin import UserAdmin
+from .models import User
 
-# Register your models here.
-# class ProfileAdmin(admin.ModelAdmin):
-#     list_display = ('user', 'address')
-admin.site.register(Profile)
-
-# class ServiceProvidersAdmin(admin.ModelAdmin):
-#     list_display = ('user',)
+admin.site.register(User)
 admin.site.register(ServiceProviders)
