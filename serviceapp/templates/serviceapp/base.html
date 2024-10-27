@@ -58,10 +58,10 @@
                     </li>
                     {% endif %}
                     
-                    {% url 'fxsimulator:profile' as profile_url %}
+                    {% url 'serviceapp:profile' as profile_url %}
                     {% if profile_url %}
                     <li class="nav-item dropdown">
-                      <a class="nav-link ps-3 {% if request.path == profile_url %} custom-nav-link-active {% endif %}" href="{{ profile_url }}">Your Profile</a>
+                      <a class="nav-link ps-3 {% if request.path == profile_url %} custom-nav-link-active {% endif %}" href="{{ profile_url }}">Profile</a>
                     </li>
                     {% endif %}
                     
