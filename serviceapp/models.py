@@ -16,6 +16,9 @@ class Profile(models.Model):
     is_profile_complete  = models.BooleanField(default=False)
     is_service_providers = models.BooleanField(default=False)
 
+    def __str__(self):
+        return str(self.user)
+
 class ServiceProviders(models.Model): 
     user = models.OneToOneField(User, on_delete=models.CASCADE,  primary_key=True)
     contact_email =  models.EmailField(max_length = 254)
@@ -25,16 +28,3 @@ class ServiceProviders(models.Model):
     total_reviews = models.IntegerField(default=0)
     is_service_profile_complete  = models.BooleanField(default=False)
     is_available = models.BooleanField(default=False)
-
-
-#this method to generate profile when user is created
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-
-#this method to update profile when user is updated
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
-

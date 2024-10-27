@@ -2,12 +2,17 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
 from . forms import UserProfileForm
 from . models import Profile
+from django.core import serializers
+from django.forms.models import model_to_dict
 
 def index(request):
-  context_data = {}
+  
   if request.user.is_authenticated:
-    context_data["profile"] = Profile(request.user)
+    profile = Profile(request.user)
+    # print(request.user.profile.address)
 
+  context_data = {}#request.user.profile}
+  print(context_data)
   return render(request, "serviceapp/index.html", context_data)
 
 def updateProfile(request):

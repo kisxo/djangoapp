@@ -1,1 +1,16 @@
 {% extends "serviceapp/base.html" %}
+{% block head%}
+{% endblock%}
+
+{% block head_title%} SmartServe{% endblock%}
+
+{% block body%}
+
+
+{% url 'serviceapp:updateProfile' as updateProfile_url %}
+{% if user.profile.is_profile_complete is not True and updateProfile_url %}
+Update your profile
+<a href="{{ updateProfile_url }}">Your Profile</a>
+{% endif %}
+
+{% endblock%}
