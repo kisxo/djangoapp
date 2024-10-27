@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'serviceapp',
     "widget_tweaks",
     "slippers",
+    "serviceproviderapp",   
 ]
 
 AUTH_USER_MODEL = 'serviceapp.User'
