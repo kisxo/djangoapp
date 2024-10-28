@@ -8,6 +8,7 @@ urlpatterns = [
     path("serviceproviderprofile/", views.serviceproviderprofile, name="serviceproviderprofile"),
     path("serviceproviderupdate/<slug:field>/", views.serviceproviderupdate, name="serviceproviderupdate"),
     path("book-service/<int:id>/", views.bookservice, name="bookservice"),
+    path("bulkserviceadd/", views.bulkserviceadd, name="bulkserviceadd")
     # path("profile", views.profile, name="profile"),
     # path("updateProfile/<slug:field>/", views.updateProfile, name="updateProfile"),
 ]

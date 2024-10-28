@@ -3,7 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .models import ServiceProviders
 from django.conf import settings
-from .forms import ServiceProfileForm
+from django.core.files.storage import FileSystemStorage
+import pandas
 
 @login_required
 def servicedashboard(request):
@@ -83,3 +84,16 @@ def bookservice(request, id):
         pass
 
     return render(request, 'serviceproviderapp/bookservice.html', { 'id': id})
+
+@login_required
+def bulkserviceadd(request):
+    if request.method == "POST":
+        excel_file = request.FILES['excel_file']
+
+        excel_data_df = pandas.read_excel(excel_file)
+
+        json_str = excel_data_df.to_json()
+
+        print('Excel Sheet to JSON:\n', json_str)
+
+    return render(request, 'serviceproviderapp/bulkserviceadd.html')

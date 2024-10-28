@@ -72,6 +72,13 @@
                       <a class="nav-link ps-3 {% if request.path == servicedashboard_url %} custom-nav-link-active {% endif %}" href="{{ servicedashboard_url }}">Dashboard</a>
                     </li>
                     {% endif %}
+
+                    {% url 'serviceproviderapp:bulkserviceadd' as bulkserviceadd_url %}
+                    {% if user.is_staff and bulkserviceadd_url %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link ps-3 {% if request.path == bulkserviceadd_url %} custom-nav-link-active {% endif %}" href="{{ bulkserviceadd_url }}">Bulk Service Add</a>
+                    </li>
+                    {% endif %}
                     
                     
                     {% url 'account_login' as login_url %}

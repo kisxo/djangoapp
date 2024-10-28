@@ -1,5 +1,12 @@
 {% extends "serviceapp/base.html" %}
 {% block head%}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.2.1/ol.css">
+<style>
+    #map {
+        width: 100%;
+        height: 400px;
+    }
+</style>
 {% endblock%}
 
 {% block head_title%} SmartServe{% endblock%}
@@ -20,5 +27,24 @@ Complete Your Profile
 <center class="countainer gap-5">
     <a href=""><button type="button" class="btn btn-primary w-25">Search Services</button></a>
 </center>
+
+<div id="map"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/ol@v10.2.1/dist/ol.js"></script>
+<script>
+    // Create a map view
+    const map = new ol.Map({
+        target: 'map',
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat([24.64144, 92.56624]), // Coordinates for New York City
+            zoom: 10
+        })
+    });
+</script>
 
 {% endblock%}

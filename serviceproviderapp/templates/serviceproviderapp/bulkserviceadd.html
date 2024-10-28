@@ -1,0 +1,26 @@
+{% extends "serviceapp/base.html" %}
+{% block head%}
+{% endblock%}
+
+{% block head_title%} SmartServe{% endblock%}
+
+{% block body%}
+
+{{user.profile.is_profile_complete}}
+
+<div class="mx-4 ">
+<form action = "/serviceproviders/bulkserviceadd/" method = "post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input class="form-control form-control my-3" type="file" name="excel_file"  aria-label=".fotm-control example" required>
+    <button type="submit" class="btn btn-primary">Update Services</button>
+ </form>
+
+</div>
+
+</div>
+
+
+
+
+
+{% endblock%}
