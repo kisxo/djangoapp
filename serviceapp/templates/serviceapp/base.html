@@ -65,6 +65,14 @@
                       <a class="nav-link ps-3 {% if request.path == serviceproviderprofile_url %} custom-nav-link-active {% endif %}" href="{{ serviceproviderprofile_url }}">Service Profile</a>
                     </li>
                     {% endif %}
+
+                    {% url 'serviceproviderapp:servicedashboard' as servicedashboard_url %}
+                    {% if user.is_service_provider and servicedashboard_url %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link ps-3 {% if request.path == servicedashboard_url %} custom-nav-link-active {% endif %}" href="{{ servicedashboard_url }}">Dashboard</a>
+                    </li>
+                    {% endif %}
+                    
                     
                     {% url 'account_login' as login_url %}
                     {% url 'account_signup' as signup_url %}

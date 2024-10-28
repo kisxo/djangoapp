@@ -5,10 +5,8 @@ from .models import ServiceProviders
 from django.conf import settings
 
 @login_required
-def serviceproviderhome(request):
-    
-    if not request.user.is_service_provider:
-        return HttpResponseRedirect('/serviceproviders/serviceproviderprofile')
+def servicedashboard(request):
+    return render(request, "serviceproviderapp/dashboard.html")
 
 @login_required
 def serviceproviderprofile(request):
@@ -24,7 +22,7 @@ def serviceproviderprofile(request):
         "Landscaper",
         "Pest Control"
     ]
-    return render(request, "serviceproviderapp/serviceproviderregister.html", {'services': services_list})
+    return render(request, "serviceproviderapp/profile.html", {'services': services_list})
 
 @login_required
 def serviceproviderregister(request, field):

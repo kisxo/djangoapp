@@ -3,7 +3,7 @@ from . import views
 
 app_name = "serviceproviderapp"
 urlpatterns = [
-    path("", views.serviceproviderhome, name="serviceproviderhome"),
+    path("servicedashboard/", views.servicedashboard, name="servicedashboard"),
     path("serviceproviderprofile/", views.serviceproviderprofile, name="serviceproviderprofile"),
     path("serviceproviderregister/<slug:field>/", views.serviceproviderregister, name="serviceproviderregister"),
     # path("profile", views.profile, name="profile"),
