@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
 from .models import ServiceProviders
 from django.conf import settings
+from .forms import ServiceProfileForm
 
 @login_required
 def servicedashboard(request):
@@ -23,7 +24,7 @@ def accounttype(request, option):
 def serviceproviderprofile(request):
     if not request.user.is_service_provider:
         return HttpResponseRedirect('/')
-
+    
     services_list = [
         "Electrician",
         "Plumber",
