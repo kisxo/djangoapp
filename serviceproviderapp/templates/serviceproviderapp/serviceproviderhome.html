@@ -6,6 +6,15 @@
 
 {% block body%}
 
+{% if user.is_service_provider is not True%}
 
+    <h2>Join our large family of rich service providers!</h
+
+    <form action = "/serviceproviders/" method = "post">
+        {% csrf_token %}
+        <input class="form-control fotm-control my-3" type="text" name="first_name" value="{{user.first_name}}" placeholder="First Name" aria-label=".fotm-control example">
+        <button type="submit" class="btn btn-primary">Update First Name</button>
+     </form>
+    {% endif %}
 
 {% endblock%}

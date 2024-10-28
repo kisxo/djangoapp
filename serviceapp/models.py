@@ -15,18 +15,8 @@ class User(AbstractUser):
     latitude = models.FloatField(default=0)
     longitude = models.FloatField(default=0)
     is_profile_complete  = models.BooleanField(default=False)
-    is_service_providers = models.BooleanField(default=False)
+    is_service_provider = models.BooleanField(default=False)
     
     def __str__(self):
         return f'{self.id}, {self.username}, {self.address}'
     
-
-class ServiceProviders(models.Model): 
-    user = models.OneToOneField(User, on_delete=models.CASCADE,  primary_key=True)
-    contact_email =  models.EmailField(max_length = 254)
-    service_type = models.CharField(max_length=20)
-    rating = models.FloatField(default=0)
-    total_rating = models.IntegerField(default=0)
-    total_reviews = models.IntegerField(default=0)
-    is_service_profile_complete  = models.BooleanField(default=False)
-    is_available = models.BooleanField(default=False)

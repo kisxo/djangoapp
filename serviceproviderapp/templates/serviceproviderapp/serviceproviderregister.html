@@ -1,0 +1,52 @@
+{% extends "serviceapp/base.html" %}
+{% block head%}
+{% endblock%}
+
+{% block head_title%} SmartServe{% endblock%}
+
+{% block body%}
+
+{% if user.is_service_provider is not True%}
+
+<div class="mx-4">
+  <h2>Join our large family of rich service providers!</h2>
+
+  <form action = "/serviceproviders/serviceproviderregister/service_type/" method = "post">
+    {% csrf_token %}
+    <select class="form-select" aria-label="Default select example" name="service_type" required>
+      <option disabled selected value="">Select your service type</option>
+      {% for service in services %}
+      <option value="{{service}}">{{service}}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary my-2">Update Sevice</button>
+  </form>
+
+  <form action = "/serviceproviders/serviceproviderregister/address/" method = "post">
+    {% csrf_token %}
+    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="address" aria-label=".fotm-control example">
+    <button type="submit" class="btn btn-primary">Update address</button>
+  </form>
+
+  <form action = "/serviceproviders/serviceproviderregister/is_available/" method = "post">
+    {% csrf_token %}
+    <div class="form-check form-switch my-2">
+      <input class="form-check-input" type="checkbox" name="is_available" id="flexSwitchCheckDefault">
+      <label class="form-check-label" for="flexSwitchCheckDefault">Is available</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Availity</button>
+  </form>
+  <form action = "/serviceproviders/serviceproviderregister/contact/" method = "post">
+    {% csrf_token %}
+    <input class="form-control fotm-control my-3" type="text" name="contact_phone" value="{{user.contact_phone}}"  placeholder="Phone" aria-label=".fotm-control example">
+    <input class="form-control fotm-control my-3" type="text" name="contact_email" value="{{user.email}}"  placeholder="Email" aria-label=".fotm-control example">
+    <button type="submit" class="btn btn-primary">Update Contact</button>
+ </form>
+
+</div>
+
+
+
+{% endif %}
+
+{% endblock%}
