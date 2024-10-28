@@ -56,8 +56,26 @@
         <input class="form-control fotm-control my-3" type="text" name="city" value="{{user.city}}"  placeholder="city" aria-label=".fotm-control example">
         <button type="submit" class="btn btn-primary">Update City</button>
      </form>
+
+     {% if user.is_service_provider %}
+
+     <form action = "/updateProfile/deleteserviceproviderprofile/" method = "post">
+      {% csrf_token %}
+      <input class="form-control fotm-control my-3" type="password" name="password" aria-label=".fotm-control">
+      <button type="submit" class="btn btn-danger">Delete Service Provider Profile</button>
+      </form>
+     
+      {% else %}
+      <form action = "/updateProfile/becomeprovider/" method = "post">
+         {% csrf_token %}
+         <input class="form-control fotm-control my-3" type="password" name="password" aria-label=".fotm-control">
+         <button type="submit" class="btn btn-danger">Become Service Provider</button>
+      </form>
+      {% endif %}
+   
     </div>
    
+    
 
     
 

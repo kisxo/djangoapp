@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest, HttpResponseRedirect
-from . forms import ProfileForm
 from django.core import serializers
 from django.forms.models import model_to_dict
 from django.contrib.auth.decorators import login_required
@@ -37,23 +36,23 @@ def updateProfile(request, field):
 
   if request.method == "POST":
 
-    match field:
-      case 'profile_picture':
-        request.user.profile_picture = request.FILES.get("profile_picture")
-      case 'first_name':
-        request.user.first_name = request.POST.get("first_name")
-      case 'last_name':
-        request.user.last_name = request.POST.get("last_name")
-      case 'contact_phone':
-        request.user.contact_phone = request.POST.get("contact_phone")
-      case 'address':
-        request.user.address = request.POST.get("address")
-      case 'zip_code':
-        request.user.zip_code = request.POST.get("zip_code")
-      case 'city':
-        request.user.city = request.POST.get("city")
-      case _:
-          pass
+    # match field:
+    #   case 'profile_picture':
+    #     request.user.profile_picture = request.FILES.get("profile_picture")
+    #   case 'first_name':
+    #     request.user.first_name = request.POST.get("first_name")
+    #   case 'last_name':
+    #     request.user.last_name = request.POST.get("last_name")
+    #   case 'contact_phone':
+    #     request.user.contact_phone = request.POST.get("contact_phone")
+    #   case 'address':
+    #     request.user.address = request.POST.get("address")
+    #   case 'zip_code':
+    #     request.user.zip_code = request.POST.get("zip_code")
+    #   case 'city':
+    #     request.user.city = request.POST.get("city")
+    #   case _:
+    #       pass
     request.user.save()
     return HttpResponseRedirect('/profile')
   else:
