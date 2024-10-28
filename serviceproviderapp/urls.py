@@ -6,7 +6,7 @@ urlpatterns = [
     path("accountmode/<slug:option>/", views.accounttype, name="accounttype"),
     path("servicedashboard/", views.servicedashboard, name="servicedashboard"),
     path("serviceproviderprofile/", views.serviceproviderprofile, name="serviceproviderprofile"),
-    path("serviceproviderregister/<slug:field>/", views.serviceproviderregister, name="serviceproviderregister"),
+    path("serviceproviderupdate/<slug:field>/", views.serviceproviderupdate, name="serviceproviderupdate"),
     # path("profile", views.profile, name="profile"),
     # path("updateProfile/<slug:field>/", views.updateProfile, name="updateProfile"),
 ]

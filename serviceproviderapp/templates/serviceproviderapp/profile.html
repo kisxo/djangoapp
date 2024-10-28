@@ -6,57 +6,59 @@
 
 {% block body%}
 
-hello uday
 
 <div class="mx-4">
   <h2>Join our large family of rich service providers!</h2>
 
-  <form action = "/serviceproviders/serviceproviderregister/contact/" method = "post">
+  <form action = "/serviceproviders/serviceproviderupdate/contact/" method = "post">
     {% csrf_token %}
-    <input class="form-control fotm-control my-3" type="text" name="contact_phone" value="{{user.contact_phone}}"  placeholder="Phone" aria-label=".fotm-control example" required>
-    <input class="form-control fotm-control my-3" type="text" name="contact_email" value="{{user.email}}"  placeholder="Email" aria-label=".fotm-control example" required>
+    <input class="form-control fotm-control my-3" type="text" name="contact_email" value="{{user.serviceproviders.contact_email}}"  placeholder="Email" aria-label=".fotm-control example" required>
+    <input class="form-control fotm-control my-3" type="text" name="contact_phone" value="{{user.serviceproviders.contact_phone}}"  placeholder="Phone" aria-label=".fotm-control example" required>
     <button type="submit" class="btn btn-primary">Update Contact</button>
  </form>
 
-  <form action = "/serviceproviders/serviceproviderregister/service_type/" method = "post">
+  <form action = "/serviceproviders/serviceproviderupdate/service_type/" method = "post">
     {% csrf_token %}
-    <select class="form-select" aria-label="Default select example" name="service_type" required>
+    <select class="form-select my-3" aria-label="Default select example" name="service_type" required>
       <option disabled selected value="">Select your service type</option>
       {% for service in services %}
       <option value="{{service}}">{{service}}</option>
       {% endfor %}
     </select>
-    <button type="submit" class="btn btn-primary my-2">Update Sevice</button>
+    <button type="submit" class="btn btn-primary">Update Sevice</button>
   </form>
 
-  <form action = "/serviceproviders/serviceproviderregister/address/" method = "post">
+  <form action = "/serviceproviders/serviceproviderupdate/bio/" method = "post">
     {% csrf_token %}
-    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="address" aria-label=".fotm-control example">
+    <input class="form-control fotm-control my-3" type="text" name="bio" value="{{user.serviceproviders.bio}}"  placeholder="Bio" aria-label=".fotm-control example">
     <button type="submit" class="btn btn-primary">Update Bio</button>
   </form>
 
-  <form action = "/serviceproviders/serviceproviderregister/address/" method = "post">
+  <form action = "/serviceproviders/serviceproviderupdate/address/" method = "post">
     {% csrf_token %}
-    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="Address" aria-label=".fotm-control example">
-    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="City" aria-label=".fotm-control example">
-    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="Zip Code" aria-label=".fotm-control example">
+    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.serviceproviders.address}}"  placeholder="Address" aria-label=".fotm-control example">
+    <input class="form-control fotm-control my-3" type="text" name="city" value="{{user.serviceproviders.city}}"  placeholder="City" aria-label=".fotm-control example">
+    <input class="form-control fotm-control my-3" type="text" name="zip_code" value="{{user.serviceproviders.zip_code}}"  placeholder="Zip Code" aria-label=".fotm-control example">
     <button type="submit" class="btn btn-primary">Update Address</button>
   </form>
 
-  <form action = "/serviceproviders/serviceproviderregister/address/" method = "post">
+  <form action = "/serviceproviders/serviceproviderupdate/coords/" method = "post">
     {% csrf_token %}
-    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="Latitude" aria-label=".fotm-control example">
-    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="Longitude" aria-label=".fotm-control example">
+    <div class="input-group text-center">
+      <input type="number" class="form-control text-center my-3" value="{{user.serviceproviders.latitude}}" placeholder="Latitude"  name="latitude" id="latitude-input" readonly required>
+      <input type="number" class="form-control text-center my-3" value="{{user.serviceproviders.longitude}}" placeholder="Longitude" name="longitude" id="longitude-input" readonly required>
+      <button class="btn btn-primary text-center w-25" type="button" id="updatelocation" onclick="loadlocation();">Load Location</button>
+    </div>
     <button type="submit" class="btn btn-primary">Update Location</button>
   </form>
 
   
 
-  <form action = "/serviceproviders/serviceproviderregister/is_available/" method = "post">
+  <form action = "/serviceproviders/serviceproviderupdate/is_available/" method = "post">
     {% csrf_token %}
-    <div class="form-check form-switch my-2">
-      <input class="form-check-input" type="checkbox" name="is_available" id="flexSwitchCheckDefault">
-      <label class="form-check-label" for="flexSwitchCheckDefault">Is available</label>
+    <div class="form-check form-switch my-3">
+      <input class="form-check-input my-3" type="checkbox" name="is_available" {% if user.serviceproviders.is_available is True %} checked {% endif %} id="flexSwitchCheckDefault">
+      <label class="form-check-label my-3" for="flexSwitchCheckDefault">Is available</label>
     </div>
     <button type="submit" class="btn btn-primary">Update Availity</button>
   </form>
@@ -64,5 +66,21 @@ hello uday
 
 </div>
 
-
 {% endblock%}
+
+{% block body_extra %}
+<script>
+const latitude_input = document.querySelector("#latitude-input")
+const longitude_input = document.querySelector("#longitude-input")
+
+function loadlocation(){
+  latitude_input.value = null;
+  longitude_input.value = null;
+  navigator.geolocation.getCurrentPosition((position) => {
+    latitude_input.value = position.coords.latitude;
+    longitude_input.value = position.coords.longitude;
+  })
+};
+
+</script>
+{% endblock %}

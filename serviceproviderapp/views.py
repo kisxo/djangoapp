@@ -39,26 +39,40 @@ def serviceproviderprofile(request):
     return render(request, "serviceproviderapp/profile.html", {'services': services_list})
 
 @login_required
-def serviceproviderregister(request, field):
+def serviceproviderupdate(request, field):
 
     current_serviceprovider = ServiceProviders.objects.get_or_create(user = request.user)
     current_serviceprovider = ServiceProviders.objects.get(user = request.user)
     if request.method == "POST":
+        match field:
+            case 'contact':
+                current_serviceprovider.contact_email = request.POST.get("contact_email")
+                current_serviceprovider.contact_phone = request.POST.get("contact_phone")
+            case 'service_type':
+                current_serviceprovider.service_type = request.POST.get("service_type")
+            case 'bio':
+                current_serviceprovider.bio  = request.POST.get("bio")
+            case 'address':
+                current_serviceprovider.address  = request.POST.get("address")
+                current_serviceprovider.city  = request.POST.get("city")
+                current_serviceprovider.zip_code  = request.POST.get("zip_code")
+            case 'coords':
+                if not request.POST.get("latitude") and not request.POST.get("longitude"):
+                    return HttpResponseRedirect('/serviceproviders/serviceproviderprofile/')
+                else:
+                    current_serviceprovider.latitude  = request.POST.get("latitude")
+                    current_serviceprovider.longitude  = request.POST.get("longitude")
+            case 'is_available':
+                # current_serviceprovider.is_available = request.POST.get("is_available")
+                if request.POST.get("is_available") == 'on':
+                    current_serviceprovider.is_available = True
+                else:
+                    current_serviceprovider.is_available = False
 
-        # match field:
-        #     case 'service_type':
-        #         current_serviceprovider.service_type = request.POST.get("service_type")
-        #     case 'contact':
-        #         request.user.contact_phone = request.POST.get("contact_phone")
-        #         current_serviceprovider.contact_email = request.POST.get("contact_email")
-        #     case 'address':
-        #         request.user.address = request.POST.get("address")
-        #     case 'is_availabe':
-        #         current_serviceprovider.is_available = request.POST.get("is_available")
-        #     case _:
-        #         pass
-            
-        request.user.save()
+            case _:
+                pass
+  
         current_serviceprovider.save()
-        print(request.POST.get("is_available"))
-    return HttpResponseRedirect('/serviceproviders/serviceproviderprofile')
+        return HttpResponseRedirect('/serviceproviders/serviceproviderprofile/')
+
+    
