@@ -76,3 +76,10 @@ def serviceproviderupdate(request, field):
         return HttpResponseRedirect('/serviceproviders/serviceproviderprofile/')
 
     
+@login_required
+def bookservice(request, id):
+    if request.method == "POST":
+        print("post method book")
+        pass
+
+    return render(request, 'serviceproviderapp/bookservice.html', { 'id': id})

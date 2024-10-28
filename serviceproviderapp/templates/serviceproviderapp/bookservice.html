@@ -1,0 +1,39 @@
+{% extends "serviceapp/base.html" %}
+{% block head%}
+{% endblock%}
+
+{% block head_title%} SmartServe{% endblock%}
+
+{% block body%}
+
+
+<div class="mx-4">
+    <form action = "/serviceproviders/book-service/{{id}}/" method = "post">
+        {% csrf_token %}
+        <input type="number" class="form-control text-center my-3" value="{{user.serviceproviders.latitude}}" placeholder="Latitude"  name="latitude" id="latitude-input" readonly required>
+        <input type="number" class="form-control text-center my-3" value="{{user.serviceproviders.longitude}}" placeholder="Longitude" name="longitude" id="longitude-input" readonly required>
+        
+        <input class="form-control fotm-control my-3" type="text" name="contact_email" value="{{user.serviceproviders.contact_email}}"  placeholder="Email" aria-label=".fotm-control example" required>
+        <input class="form-control fotm-control my-3" type="text" name="contact_phone" value="{{user.serviceproviders.contact_phone}}"  placeholder="Phone" aria-label=".fotm-control example" required>
+        <button type="submit" class="btn btn-primary">Update Contact</button>
+     </form>
+</div>
+
+{% endblock %}
+
+ {% block body_extra %}
+<script>
+const latitude_input = document.querySelector("#latitude-input")
+const longitude_input = document.querySelector("#longitude-input")
+
+function loadlocation(){
+  latitude_input.value = null;
+  longitude_input.value = null;
+  navigator.geolocation.getCurrentPosition((position) => {
+    latitude_input.value = position.coords.latitude;
+    longitude_input.value = position.coords.longitude;
+  })
+};
+
+</script>
+{% endblock %}

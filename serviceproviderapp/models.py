@@ -5,7 +5,7 @@ from django.conf import settings
 class ServiceProviders(models.Model): 
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,  primary_key=True)
     contact_email =  models.EmailField(max_length = 254)
-    contact_phone =  models.EmailField(max_length = 15)
+    contact_phone =  models.CharField(max_length = 15)
     service_type = models.CharField(max_length=20)
     bio = models.CharField("Bio", max_length=1024)
     address = models.CharField("Address", max_length=1024)
