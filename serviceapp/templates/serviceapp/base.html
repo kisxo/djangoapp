@@ -51,12 +51,6 @@
             </details>
             <div class="collapse navbar-collapse p-0 m-0 border-top" id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    {% url 'serviceapp:updateProfile' as updateProfile_url %}
-                    {% if updateProfile_url %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link ps-3 {% if request.path == updateProfile_url %} custom-nav-link-active {% endif %}" aria-current="page" href="{{ updateProfile_url }}">Profile</a>
-                    </li>
-                    {% endif %}
                     
                     {% url 'serviceapp:profile' as profile_url %}
                     {% if profile_url %}
@@ -65,10 +59,10 @@
                     </li>
                     {% endif %}
 
-                    {% url 'serviceproviders:serviceproviderprofile' as serviceproviderprofile_url %}
-                    {% if user.is_service_provider and profile_url %}
+                    {% url 'serviceproviderapp:serviceproviderprofile' as serviceproviderprofile_url %}
+                    {% if user.is_service_provider and serviceproviderprofile_url %}
                     <li class="nav-item dropdown">
-                      <a class="nav-link ps-3 {% if request.path == profile_url %} custom-nav-link-active {% endif %}" href="{{ serviceproviderprofile_url }}">Profile</a>
+                      <a class="nav-link ps-3 {% if request.path == serviceproviderprofile_url %} custom-nav-link-active {% endif %}" href="{{ serviceproviderprofile_url }}">Service Profile</a>
                     </li>
                     {% endif %}
                     

@@ -33,30 +33,6 @@
         <button type="submit" class="btn btn-primary">Update Last Name</button>
      </form>
 
-     <form action = "/updateProfile/phone/" method = "post">
-        {% csrf_token %}
-        <input class="form-control fotm-control my-3" type="text" name="contact_phone" value="{{user.contact_phone}}"  placeholder="Phone" aria-label=".fotm-control example">
-        <button type="submit" class="btn btn-primary">Update Phone</button>
-     </form>
-
-     <form action = "/updateProfile/address/" method = "post">
-        {% csrf_token %}
-        <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="address" aria-label=".fotm-control example">
-        <button type="submit" class="btn btn-primary">Update address</button>
-     </form>
-     
-     <form action = "/updateProfile/zip_code/" method = "post">
-        {% csrf_token %}
-        <input class="form-control fotm-control my-3" type="text" name="zip_code" value="{{user.zip_code}}"  placeholder="zip_code" aria-label=".fotm-control example">
-        <button type="submit" class="btn btn-primary">Update Zip Code</button>
-     </form>
-
-     <form action = "/updateProfile/city/" method = "post">
-        {% csrf_token %}
-        <input class="form-control fotm-control my-3" type="text" name="city" value="{{user.city}}"  placeholder="city" aria-label=".fotm-control example">
-        <button type="submit" class="btn btn-primary">Update City</button>
-     </form>
-
      {% if user.is_service_provider %}
 
      <form action = "/updateProfile/deleteserviceproviderprofile/" method = "post">

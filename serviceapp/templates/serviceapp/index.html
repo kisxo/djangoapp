@@ -8,10 +8,10 @@
 
 {% url 'serviceapp:profile' as profile_url %}
 
-{% if user.is_profile_complete is not True %}
+{% if not user.first_name or not user.last_name %}
+Complete Your Profile 
     {% if profile_url %}
-        Update your profile
-        <a href="{{ profile_url }}">Your Profile</a>
+        <a href="{{ profile_url }}">Here</a>
     {% endif %}
 {% endif %}
 
@@ -19,7 +19,6 @@
 
 <center class="countainer gap-5">
     <a href=""><button type="button" class="btn btn-primary w-25">Search Services</button></a>
-    <a href="{{ serviceproviderhome_url }}"><button type="button" class="btn btn-primary w-25">Become a Service Provider</button></a>
 </center>
 
 {% endblock%}
