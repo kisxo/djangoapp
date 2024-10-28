@@ -17,35 +17,33 @@
 
     <form action = "/updateProfile/profile_picture/" method = "post" enctype="multipart/form-data">
         {% csrf_token %}
-        <input class="form-control form-control my-3" type="file" name="profile_picture" placeholder="Upload a Profile Picture" aria-label=".fotm-control example">
+        <input class="form-control form-control my-3" type="file" name="profile_picture" placeholder="Upload a Profile Picture" aria-label=".fotm-control example" required> 
         <button type="submit" class="btn btn-primary">Update Profile Picture</button>
      </form>
 
     <form action = "/updateProfile/first_name/" method = "post">
         {% csrf_token %}
-        <input class="form-control fotm-control my-3" type="text" name="first_name" value="{{user.first_name}}" placeholder="First Name" aria-label=".fotm-control example">
+        <input class="form-control form-control my-3" type="text" name="first_name" placeholder="First Name" aria-label=".fotm-control example" required>
         <button type="submit" class="btn btn-primary">Update First Name</button>
      </form>
 
      <form action = "/updateProfile/last_name/" method = "post">
         {% csrf_token %}
-        <input class="form-control fotm-control my-3" type="text" name="last_name" value="{{user.last_name}}"  placeholder="Last Name" aria-label=".fotm-control example">
+        <input class="form-control form-control my-3" type="text" name="last_name" placeholder="Last Name" aria-label=".fotm-control example" required>
         <button type="submit" class="btn btn-primary">Update Last Name</button>
      </form>
 
      {% if user.is_service_provider %}
-
-     <form action = "/updateProfile/deleteserviceproviderprofile/" method = "post">
-      {% csrf_token %}
-      <input class="form-control fotm-control my-3" type="password" name="password" aria-label=".fotm-control">
-      <button type="submit" class="btn btn-danger">Delete Service Provider Profile</button>
-      </form>
-     
-      {% else %}
-      <form action = "/updateProfile/becomeprovider/" method = "post">
+      <form action = "/serviceproviders/accountmode/delete_service/" method = "post">
          {% csrf_token %}
-         <input class="form-control fotm-control my-3" type="password" name="password" aria-label=".fotm-control">
-         <button type="submit" class="btn btn-danger">Become Service Provider</button>
+         <input class="form-control form-control my-3" type="password" name="password" required>
+         <button type="submit" class="btn btn-danger">Delete Service Provider Account</button>
+      </form>
+      {% else %}
+      <form action = "/serviceproviders/accountmode/become_provider/" method = "post">
+         {% csrf_token %}
+         <input class="form-control form-control my-3" type="password" value="" name="password" required>
+         <button type="submit" class="btn btn-success">Become Service Provider</button>
       </form>
       {% endif %}
    

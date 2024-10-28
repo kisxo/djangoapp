@@ -9,7 +9,20 @@ def servicedashboard(request):
     return render(request, "serviceproviderapp/dashboard.html")
 
 @login_required
+def accounttype(request, option):
+    if request.method == "POST" and request.user.check_password(request.POST['password']):
+        if option == 'become_provider':
+            request.user.is_service_provider = True
+        elif option == 'delete_service':
+            request.user.is_service_provider = False
+            
+    request.user.save()
+    return HttpResponseRedirect('/profile')
+
+@login_required
 def serviceproviderprofile(request):
+    if not request.user.is_service_provider:
+        return HttpResponseRedirect('/')
 
     services_list = [
         "Electrician",
