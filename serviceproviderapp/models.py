@@ -9,6 +9,7 @@ class ServiceProviders(models.Model):
     service_type = models.CharField(max_length=20)
     bio = models.CharField("Bio", max_length=1024)
     address = models.CharField("Address", max_length=1024)
+    city = models.CharField("City", max_length=1024)
     zip_code = models.CharField("ZIP / Postal code", max_length=12)
     rating = models.FloatField(default=0)
     latitude = models.FloatField(default=0)

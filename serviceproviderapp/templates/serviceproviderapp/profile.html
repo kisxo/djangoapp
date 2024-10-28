@@ -11,6 +11,13 @@ hello uday
 <div class="mx-4">
   <h2>Join our large family of rich service providers!</h2>
 
+  <form action = "/serviceproviders/serviceproviderregister/contact/" method = "post">
+    {% csrf_token %}
+    <input class="form-control fotm-control my-3" type="text" name="contact_phone" value="{{user.contact_phone}}"  placeholder="Phone" aria-label=".fotm-control example" required>
+    <input class="form-control fotm-control my-3" type="text" name="contact_email" value="{{user.email}}"  placeholder="Email" aria-label=".fotm-control example" required>
+    <button type="submit" class="btn btn-primary">Update Contact</button>
+ </form>
+
   <form action = "/serviceproviders/serviceproviderregister/service_type/" method = "post">
     {% csrf_token %}
     <select class="form-select" aria-label="Default select example" name="service_type" required>
@@ -25,8 +32,25 @@ hello uday
   <form action = "/serviceproviders/serviceproviderregister/address/" method = "post">
     {% csrf_token %}
     <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="address" aria-label=".fotm-control example">
-    <button type="submit" class="btn btn-primary">Update address</button>
+    <button type="submit" class="btn btn-primary">Update Bio</button>
   </form>
+
+  <form action = "/serviceproviders/serviceproviderregister/address/" method = "post">
+    {% csrf_token %}
+    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="Address" aria-label=".fotm-control example">
+    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="City" aria-label=".fotm-control example">
+    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="Zip Code" aria-label=".fotm-control example">
+    <button type="submit" class="btn btn-primary">Update Address</button>
+  </form>
+
+  <form action = "/serviceproviders/serviceproviderregister/address/" method = "post">
+    {% csrf_token %}
+    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="Latitude" aria-label=".fotm-control example">
+    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.address}}"  placeholder="Longitude" aria-label=".fotm-control example">
+    <button type="submit" class="btn btn-primary">Update Location</button>
+  </form>
+
+  
 
   <form action = "/serviceproviders/serviceproviderregister/is_available/" method = "post">
     {% csrf_token %}
@@ -36,12 +60,7 @@ hello uday
     </div>
     <button type="submit" class="btn btn-primary">Update Availity</button>
   </form>
-  <form action = "/serviceproviders/serviceproviderregister/contact/" method = "post">
-    {% csrf_token %}
-    <input class="form-control fotm-control my-3" type="text" name="contact_phone" value="{{user.contact_phone}}"  placeholder="Phone" aria-label=".fotm-control example">
-    <input class="form-control fotm-control my-3" type="text" name="contact_email" value="{{user.email}}"  placeholder="Email" aria-label=".fotm-control example">
-    <button type="submit" class="btn btn-primary">Update Contact</button>
- </form>
+  
 
 </div>
 
