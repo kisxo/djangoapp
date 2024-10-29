@@ -10,25 +10,6 @@ def index(request):
   
   return render(request, "serviceapp/index.html")
 
-# @login_required
-# def updateProfile(request):
-#   submitted = False
-#   if request.method == "POST":
-#     form = ProfileForm(request.POST)
-#     if form.is_valid():
-#       new_profile_form = form.save(commit=False)
-#       Fruit.objects.create(name="Apple")
-#       Profile.objects.create()
-#       return HttpResponseRedirect('/updateProfile?submitted=True')
-#   else:
-#     form = ProfileForm
-#     if 'submitted' in request.GET:
-#       submitted = True
-
-#   context_data = { 'form': form, 
-#                    'submitted': submitted}
-#   return render(request, "serviceapp/updateProfile.html", context_data)
-
 @login_required
 def profile(request):
   return render(request, "serviceapp/profile.html")

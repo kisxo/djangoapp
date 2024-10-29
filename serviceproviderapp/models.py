@@ -30,6 +30,8 @@ class ServicesOrder(models.Model):
     customer_longitude = models.FloatField(default=0)
     provider = models.ForeignKey(ServiceProviders, on_delete=models.CASCADE)
     provider_name = models.CharField(max_length = 254)
+    is_active = models.BooleanField(default=True)
     is_accepted = models.BooleanField(default=False)
     is_complete = models.BooleanField(default=False)
+    is_cancelled = models.BooleanField(default=False)
     service_time = models.DateTimeField(auto_now_add=True)

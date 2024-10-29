@@ -10,7 +10,20 @@ from .models import ServicesOrder
 
 @login_required
 def servicedashboard(request):
-    return render(request, "serviceproviderapp/dashboard.html")
+    if not request.user.is_service_provider:
+        return HttpResponseRedirect('/')
+    orders = ServicesOrder.objects.filter(provider = request.user.id)
+    active_orders = ServicesOrder.objects.filter(provider = request.user.id).filter(is_active=True)
+    complete_orders = ServicesOrder.objects.filter(provider = request.user.id).filter(is_complete=True)
+    cancelled_orders = ServicesOrder.objects.filter(provider = request.user.id).filter(is_cancelled=True)
+
+    contex_data = {
+        'orders': orders,
+        'active_orders': active_orders,
+        'complete_orders': complete_orders,
+        'cancelled_orders': cancelled_orders
+    }
+    return render(request, "serviceproviderapp/dashboard.html", contex_data)
 
 @login_required
 def accounttype(request, option):
