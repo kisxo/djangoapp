@@ -56,9 +56,9 @@
 
   <form action = "/serviceproviders/serviceproviderupdate/coords/" method = "post">
     {% csrf_token %}
-    <div class="input-group text-center">
-      <input type="number" class="form-control text-center my-3" value="{{user.serviceproviders.latitude}}" placeholder="Latitude"  name="latitude" id="latitude-input" readonly required>
-      <input type="number" class="form-control text-center my-3" value="{{user.serviceproviders.longitude}}" placeholder="Longitude" name="longitude" id="longitude-input" readonly required>
+    <div class="input-group text-center my-3">
+      <input type="number" class="form-control text-center" placeholder="Latitude"  name="latitude" id="latitude-input" readonly required>
+      <input type="number" class="form-control text-center" placeholder="Longitude" name="longitude" id="longitude-input" readonly required>
       <button class="btn btn-primary text-center w-25" type="button" id="updatelocation" onclick="loadlocation();">Load Location</button>
     </div>
     <button type="submit" class="btn btn-primary">Update Location</button>

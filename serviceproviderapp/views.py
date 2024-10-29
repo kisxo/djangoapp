@@ -5,6 +5,7 @@ from .models import ServiceProviders
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import pandas
+from serviceapp.models import User
 
 @login_required
 def servicedashboard(request):
@@ -82,8 +83,15 @@ def bookservice(request, id):
     if request.method == "POST":
         print("post method book")
         pass
+    
+    service_provider = ServiceProviders.objects.get(user = id)
 
-    return render(request, 'serviceproviderapp/bookservice.html', { 'id': id})
+    contex_data = {
+        'id': id,
+        'service': service_provider,
+    }
+
+    return render(request, 'serviceproviderapp/bookservice.html', contex_data)
 
 @login_required
 def bulkserviceadd(request):
