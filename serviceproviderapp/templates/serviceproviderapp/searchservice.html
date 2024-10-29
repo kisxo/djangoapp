@@ -6,15 +6,16 @@
 />
 {% endblock%} {% block head_title%} SmartServe{% endblock%} {% block body%}
 
-<div class="search-bar d-flex flex-row justify-content-center my-3 gap-3">
+<form class="search-bar d-flex flex-row justify-content-center my-3 gap-3" method="post">
+  {% csrf_token %}
   <input
     class="input-group-text w-50"
     type="text"
-    id="searchInput"
+    name="query"
     placeholder="Search by name, service, or address"
   />
-  <button class="btn btn-primary px-5">Search</button>
-</div>
+  <button type="submit" class="btn btn-primary px-5">Search</button>
+</form>
 
 <center class="card-deck">
   {% for service in services %}

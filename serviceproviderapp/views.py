@@ -123,9 +123,18 @@ def bulkserviceadd(request):
 
 @login_required
 def searchservice(request):
-    
-    services = ServiceProviders.objects.all()
 
+    if request.method == "POST":
+       query_string = request.POST.get('query')
+       q_name = ServiceProviders.objects.filter(service_type__icontains=query_string)
+       services = ServiceProviders.objects.filter(service_type__icontains=query_string)
+       q_address = ServiceProviders.objects.filter(address__icontains=query_string)
+       q_city = ServiceProviders.objects.filter(city__icontains=query_string)
+
+       services.union(q_name, q_address, q_city)
+    else:
+        services = ServiceProviders.objects.all()
+       
     contex_data = {
         'services': services,
     }
