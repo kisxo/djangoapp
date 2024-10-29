@@ -131,8 +131,10 @@ def bulkserviceadd(request):
         json_str = excel_data_df.to_json()
 
         print('Excel Sheet to JSON:\n', json_str)
+        return HttpResponse(json_str)
 
     return render(request, 'serviceproviderapp/bulkserviceadd.html')
+    
 
 @login_required
 def searchservice(request):
@@ -162,3 +164,14 @@ def customerhistory(request):
     }
 
     return render(request, 'serviceproviderapp/customerhistory.html', contex_data)
+
+
+@login_required
+def providerhistory(request):
+    user_orders = ServicesOrder.objects.filter(customer = request.user)
+
+    contex_data = {
+        'orders': user_orders
+    }
+
+    return render(request, 'serviceproviderapp/providerhistory.html', contex_data)
