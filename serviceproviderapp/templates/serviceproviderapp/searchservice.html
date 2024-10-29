@@ -12,7 +12,7 @@
     class="input-group-text w-50"
     type="text"
     name="query"
-    placeholder="Search by name, service, or address"
+    placeholder="Search by services, or address"
   />
   <button type="submit" class="btn btn-primary px-5">Search</button>
 </form>
@@ -29,8 +29,12 @@
     </div>
     <div class="w-50 d-flex flex-column">
       <h5 class="card-title">Username: {{ service.user.username }}</h5>
+      <h4 class="card-title">Service Type: {{ service.address}}</h4>
       <h4 class="card-title">Service Type: {{ service.service_type }}</h4>
       <p class="card-text">Bio: {{ service.bio }}</p>
+      <small class="text-muted">Rating: {{ service.rating }}</small>
+      <small class="text-muted">Review: {{ service.total_rating }}</small>
+      <small class="text-muted">Review: {{ service.total_reviews }}</small>
       <small class="text-muted">Price: {{ service.price }}</small>
       <a href="/serviceproviders/book-service/{{ service.user_id }}" class="mt-auto mx-auto p-2 w-50"><button class="btn btn-primary w-100">Book</button></a>
     </div>
