@@ -10,6 +10,7 @@ urlpatterns = [
     path("book-service/<int:id>/", views.bookservice, name="bookservice"),
     path("bulkserviceadd/", views.bulkserviceadd, name="bulkserviceadd"),
     path("searchservice/", views.searchservice, name="searchservice"),
+    path("customerhistory/", views.customerhistory, name="customerhistory")
     # path("profile", views.profile, name="profile"),
     # path("updateProfile/<slug:field>/", views.updateProfile, name="updateProfile"),
 ]

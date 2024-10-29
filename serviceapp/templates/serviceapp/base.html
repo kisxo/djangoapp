@@ -59,6 +59,13 @@
                     </li>
                     {% endif %}
 
+                    {% url 'serviceproviderapp:customerhistory' as customerhistory_url %}
+                    {% if customerhistory_url %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link ps-3 {% if request.path == customerhistory_url %} custom-nav-link-active {% endif %}" href="{{ customerhistory_url }}">Order History</a>
+                    </li>
+                    {% endif %}
+
                     {% url 'serviceproviderapp:serviceproviderprofile' as serviceproviderprofile_url %}
                     {% if user.is_service_provider and serviceproviderprofile_url %}
                     <li class="nav-item dropdown">

@@ -130,3 +130,13 @@ def searchservice(request):
         'services': services,
     }
     return render(request, 'serviceproviderapp/searchservice.html', contex_data)
+
+@login_required
+def customerhistory(request):
+    user_orders = ServicesOrder.objects.filter(customer = request.user)
+
+    contex_data = {
+        'orders': user_orders
+    }
+
+    return render(request, 'serviceproviderapp/customerhistory.html', contex_data)

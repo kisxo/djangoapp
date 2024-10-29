@@ -1,0 +1,31 @@
+{% extends "serviceapp/base.html" %}
+{% block head%}
+{% endblock%}
+
+{% block head_title%} SmartServe{% endblock%}
+
+{% block body%}
+
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Seller Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Service time</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      {% for order in orders %}
+      <tr>
+        <th>{{order.provider_name}}</th>
+        <td>{{order.is_complete}}</td>
+        <td>{{order.service_time}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}
