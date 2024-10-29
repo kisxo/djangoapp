@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+  --base-clr: #11121a;
+  --line-clr: #42434a;
+  --hover-clr: #222533;
+  --text-clr: #e6e6ef;
+  --accent-clr: #5e63ff;
+  --secondary-text-clr: #b0b3c1;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-family: Poppins, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5rem;
+}
+
+.dataContainer{
+  color: #000000;
+}
+
+/*backend data retrieval*/
+.data-entry {
+  display: flex;
+  flex-direction: row; /* Keep this if you want content inside to align horizontally */
+  width: 100%;
+  max-width: 1000px; /* Set the maximum width */
+  height: 200px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px auto; /* Center the entries */
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.data-entry img {
+  width: 300px; /* Set to desired size */
+  height: 200px; /* Set to desired size */
+  object-fit: cover; /* Ensure the image maintains its aspect ratio */
+  border-radius: 5px;
+  margin-right: 10px; /* Space between image and text */
+}
+.data-info {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  margin: auto;
+  margin-left: 20px;
+  margin-top: 10px;
+  color: #000000;
+}
+.data-info h1, h4, h3 {
+  margin: 0; /* Remove default margin */
+  color: #11121a;
+}
+
+.data-info p {
+  margin: 5px 0; /* Add space between paragraphs */
+  color: #11121a;
+}
+
+.hidden {
+  display: none; /* Hides the element */
+}

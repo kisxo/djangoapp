@@ -87,6 +87,8 @@ def bookservice(request, id):
 
 @login_required
 def bulkserviceadd(request):
+    if not request.user.is_staff:
+        return HttpResponseRedirect('/serviceproviders/serviceproviderprofile/')
     if request.method == "POST":
         excel_file = request.FILES['excel_file']
 
@@ -97,3 +99,13 @@ def bulkserviceadd(request):
         print('Excel Sheet to JSON:\n', json_str)
 
     return render(request, 'serviceproviderapp/bulkserviceadd.html')
+
+@login_required
+def searchservice(request):
+    
+    services = ServiceProviders.objects.all()
+
+    contex_data = {
+        'services': services,
+    }
+    return render(request, 'serviceproviderapp/searchservice.html', contex_data)

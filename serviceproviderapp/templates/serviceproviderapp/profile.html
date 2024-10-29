@@ -12,10 +12,16 @@
 
   <form action = "/serviceproviders/serviceproviderupdate/contact/" method = "post">
     {% csrf_token %}
-    <input class="form-control fotm-control my-3" type="text" name="contact_email" value="{{user.serviceproviders.contact_email}}"  placeholder="Email" aria-label=".fotm-control example" required>
-    <input class="form-control fotm-control my-3" type="text" name="contact_phone" value="{{user.serviceproviders.contact_phone}}"  placeholder="Phone" aria-label=".fotm-control example" required>
+    <input class="form-control form-control my-3" type="text" name="contact_email" value=""  placeholder="Email" aria-label=".fotm-control example" required>
+    <input class="form-control form-control my-3" type="text" name="contact_phone" value=""  placeholder="Phone" aria-label=".fotm-control example" required>
     <button type="submit" class="btn btn-primary">Update Contact</button>
  </form>
+
+ <form action = "/serviceproviders/serviceproviderupdate/img/" method = "post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input class="form-control form-control my-3" type="file" name="img" placeholder="Upload a Profile Picture" aria-label=".fotm-control example" required> 
+  <button type="submit" class="btn btn-primary">Update Picture</button>
+</form>
 
   <form action = "/serviceproviders/serviceproviderupdate/service_type/" method = "post">
     {% csrf_token %}
@@ -28,17 +34,23 @@
     <button type="submit" class="btn btn-primary">Update Sevice</button>
   </form>
 
+  <form action = "/serviceproviders/serviceproviderupdate/price/" method = "post">
+    {% csrf_token %}
+    <input class="form-control form-control my-3" type="text" name="bio" value=""  placeholder="Price" aria-label=".fotm-control example">
+    <button type="submit" class="btn btn-primary">Update Price</button>
+  </form>
+
   <form action = "/serviceproviders/serviceproviderupdate/bio/" method = "post">
     {% csrf_token %}
-    <input class="form-control fotm-control my-3" type="text" name="bio" value="{{user.serviceproviders.bio}}"  placeholder="Bio" aria-label=".fotm-control example">
+    <input class="form-control form-control my-3" type="text" name="bio" value=""  placeholder="Bio" aria-label=".fotm-control example">
     <button type="submit" class="btn btn-primary">Update Bio</button>
   </form>
 
   <form action = "/serviceproviders/serviceproviderupdate/address/" method = "post">
     {% csrf_token %}
-    <input class="form-control fotm-control my-3" type="text" name="address" value="{{user.serviceproviders.address}}"  placeholder="Address" aria-label=".fotm-control example">
-    <input class="form-control fotm-control my-3" type="text" name="city" value="{{user.serviceproviders.city}}"  placeholder="City" aria-label=".fotm-control example">
-    <input class="form-control fotm-control my-3" type="text" name="zip_code" value="{{user.serviceproviders.zip_code}}"  placeholder="Zip Code" aria-label=".fotm-control example">
+    <input class="form-control form-control my-3" type="text" name="address" value="{{user.serviceproviders.address}}"  placeholder="Address" aria-label=".fotm-control example">
+    <input class="form-control form-control my-3" type="text" name="city" value="{{user.serviceproviders.city}}"  placeholder="City" aria-label=".fotm-control example">
+    <input class="form-control form-control my-3" type="text" name="zip_code" value="{{user.serviceproviders.zip_code}}"  placeholder="Zip Code" aria-label=".fotm-control example">
     <button type="submit" class="btn btn-primary">Update Address</button>
   </form>
 

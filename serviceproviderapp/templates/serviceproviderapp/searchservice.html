@@ -1,0 +1,40 @@
+{% extends "serviceapp/base.html" %} {% load static %} {% block head%}
+<link
+  rel="stylesheet"
+  href="{% static 'serviceapp/css/a.css' %}"
+  media="screen"
+/>
+{% endblock%} {% block head_title%} SmartServe{% endblock%} {% block body%}
+
+<div class="search-bar d-flex flex-row justify-content-center my-3 gap-3">
+  <input
+    class="input-group-text w-50"
+    type="text"
+    id="searchInput"
+    placeholder="Search by name, service, or address"
+  />
+  <button class="btn btn-primary px-5">Search</button>
+</div>
+
+<center class="card-deck">
+  {% for service in services %}
+  <div class="card d-flex flex-row my-3 w-50">
+    <div class="w-50">
+      <img
+        class="card-img-top"
+        src="{{ service.img.url }}"
+        alt="Card image cap"
+      />
+    </div>
+    <div class="w-50 d-flex flex-column">
+      <h5 class="card-title">Username: {{ service.username }}</h5>
+      <h4 class="card-title">Service Type: {{ service.service_type }}</h4>
+      <p class="card-text">Bio: {{ service.bio }}</p>
+      <small class="text-muted">Price: {{ service.price }}</small>
+      <a href="" class="mt-auto mx-auto p-2 w-50"><button class="btn btn-primary w-100">Book</button></a>
+    </div>
+  </div>
+  {% endfor %}
+</center>
+
+{% endblock%}
