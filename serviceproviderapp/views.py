@@ -6,6 +6,7 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 import pandas
 from serviceapp.models import User
+from .models import ServicesOrder
 
 @login_required
 def servicedashboard(request):
@@ -82,7 +83,19 @@ def serviceproviderupdate(request, field):
 def bookservice(request, id):
     if request.method == "POST":
         print("post method book")
-        pass
+
+        service_provider = ServiceProviders.objects.get(user = id)
+        new_order = ServicesOrder(customer = request.user,
+                                  customer_name = request.user.username,
+                                  customer_latitude = request.POST.get("latitude"),
+                                  customer_longitude = request.POST.get("longitude"),
+                                  provider = service_provider,
+                                  provider_name = f'{service_provider.user.first_name} {service_provider.user.last_name}',
+                                  service_time = request.POST.get("service_time")
+                                  )
+        new_order.save()
+        print(type(request.POST.get("service_time")))
+        return HttpResponseRedirect('/serviceproviders/customerhistory/')
     
     service_provider = ServiceProviders.objects.get(user = id)
 

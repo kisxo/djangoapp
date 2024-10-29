@@ -32,4 +32,4 @@ class ServicesOrder(models.Model):
     provider_name = models.CharField(max_length = 254)
     is_accepted = models.BooleanField(default=False)
     is_complete = models.BooleanField(default=False)
-    order_date = models.DateTimeField(auto_now_add=True)
+    service_time = models.DateTimeField(auto_now_add=True)

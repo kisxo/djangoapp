@@ -30,10 +30,17 @@
     <form action = "/serviceproviders/book-service/{{id}}/" method = "post">
         {% csrf_token %}
 
-        <input class="form-control form-control my-3" type="text" name="customer_name" value=""  placeholder="Customer name" aria-label=".fotm-control example" required>
-        <input class="form-control form-control my-3" type="text" name="address" value="{{user.serviceproviders.address}}"  placeholder="Address" aria-label=".fotm-control example">
-        <input class="form-control form-control my-3" type="text" name="city" value="{{user.serviceproviders.city}}"  placeholder="City" aria-label=".fotm-control example">
-        <input class="form-control form-control my-3" type="text" name="zip_code" value="{{user.serviceproviders.zip_code}}"  placeholder="Zip Code" aria-label=".fotm-control example">
+        <input class="form-control form-control my-3" type="text" name="customer_name" placeholder="Customer name" aria-label=".fotm-control example" required>
+        
+        <label for="service_time">Choose a time for Service:</label>
+        <input class="form-control form-control mb-3"
+          type="datetime-local"
+          name="service_time"
+          min="2024-10-29T00:00"
+          max="2999-10-29T00:00"/>
+        <input class="form-control form-control my-3" type="text" name="address"  placeholder="Address" aria-label=".fotm-control example">
+        <input class="form-control form-control my-3" type="text" name="city"  placeholder="City" aria-label=".fotm-control example">
+        <input class="form-control form-control my-3" type="text" name="zip_code"  placeholder="Zip Code" aria-label=".fotm-control example">
     
         <div class="input-group text-center my-3">
           <input type="number" class="form-control text-center" placeholder="Latitude"  name="latitude" id="latitude-input" readonly required>
