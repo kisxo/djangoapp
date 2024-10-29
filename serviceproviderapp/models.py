@@ -4,7 +4,6 @@ from django.conf import settings
 # Create your models here.
 class ServiceProviders(models.Model): 
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,  primary_key=True)
-    username = models.CharField(max_length = 50)
     img = models.ImageField(default='images/services/service.png', blank = True, upload_to = "images/services/")
     contact_email =  models.EmailField(max_length = 254)
     contact_phone =  models.CharField(max_length = 15)
